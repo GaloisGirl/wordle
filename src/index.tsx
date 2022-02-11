@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 import { App } from './App';
-import { mergeStyles } from '@fluentui/react';
+import { mergeStyles, initializeIcons } from '@fluentui/react';
+
+import './index.css';
 
 // Inject some global styles
 mergeStyles({
@@ -11,6 +13,7 @@ mergeStyles({
   },
 });
 
+initializeIcons();
 ReactDOM.render(<App />, document.body);
 
 
