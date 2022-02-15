@@ -28,7 +28,7 @@ export const BaseModal: React.FunctionComponent<BaseModalProps> = (props: BaseMo
         >
             <Stack>
                 <Stack horizontal horizontalAlign="space-between" >
-                    <h2 id={titleId}>{props.title}</h2>
+                    <h2 id={titleId} style={{margin: 0, textIndent: '8px'}}>{props.title}</h2>
                     <IconButton
                         iconProps={{ iconName: 'Cancel' }}
                         ariaLabel="Close popup modal"
