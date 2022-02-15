@@ -1,20 +1,11 @@
 import React from 'react';
-import CSS from 'csstype';
 import { DefaultButton, Stack } from '@fluentui/react';
-
-const keyStyles: CSS.Properties = {
-    minWidth: "unset",
-    flexGrow: 1
-}
+import { Key } from './Key';
 
 export const Keyboard: React.FunctionComponent = () => {
 
-    function letterClick(x: string, e: any) {
-        console.log('clicked', x, e)
-    }
-
     function makeButton(x: string) {
-        return (<DefaultButton text={x} key={x} style={keyStyles} onClick={(e) => letterClick(x, e)}></DefaultButton>)
+        return (<Key letter={x} key={x}></Key>)
     }
 
     return (
