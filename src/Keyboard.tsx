@@ -7,35 +7,29 @@ const keyStyles: CSS.Properties = {
     flexGrow: 1
 }
 
-export class Keyboard extends React.Component {
+export const Keyboard: React.FunctionComponent = () => {
 
-    constructor(props: any) {
-        super(props);
-    }
-
-    letterClick(x: string, e: any) {
+    function letterClick(x: string, e: any) {
         console.log('clicked', x, e)
     }
 
-    makeButton(x: string) {
-        return (<DefaultButton text={x} style={keyStyles} onClick={(e) => this.letterClick(x, e)}></DefaultButton>)
+    function makeButton(x: string) {
+        return (<DefaultButton text={x} key={x} style={keyStyles} onClick={(e) => letterClick(x, e)}></DefaultButton>)
     }
 
-    render() {
-        return (
-            <Stack>
-                <Stack horizontal >
-                    {'QWERTYUIOP'.split('').map(x => this.makeButton(x))}
-                </Stack>
-                <Stack horizontal >
-                    {'ASDFGHJKL'.split('').map(x => this.makeButton(x))}
-                </Stack>
-                <Stack horizontal >
-                    <DefaultButton text="Enter"></DefaultButton>
-                    {'ZXCVBNM'.split('').map(x => this.makeButton(x))}
-                    <DefaultButton text="Del"></DefaultButton>
-                </Stack>
+    return (
+        <Stack>
+            <Stack horizontal >
+                {'QWERTYUIOP'.split('').map(makeButton)}
             </Stack>
-        );
-    }
+            <Stack horizontal >
+                {'ASDFGHJKL'.split('').map(makeButton)}
+            </Stack>
+            <Stack horizontal >
+                <DefaultButton text="Enter"></DefaultButton>
+                {'ZXCVBNM'.split('').map(makeButton)}
+                <DefaultButton text="Del"></DefaultButton>
+            </Stack>
+        </Stack>
+    );
 }
