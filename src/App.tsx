@@ -2,8 +2,8 @@ import React from 'react';
 import { Stack } from '@fluentui/react';
 
 import * as Modals from './modals';
-import { Keyboard } from './Keyboard';
-import { Grid } from './Grid';
+import { Keyboard } from './Keyboard'; 
+import { Grid } from './grid/Grid';
 
 export const App: React.FunctionComponent = () => {
   return (
