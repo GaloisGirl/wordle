@@ -2,10 +2,14 @@ import React from 'react';
 import { DefaultButton, Stack } from '@fluentui/react';
 import { Key } from './Key';
 
-export const Keyboard: React.FunctionComponent = () => {
+interface KeyboardProps {
+    keys: { [key: string]: string }
+}
+
+export const Keyboard: React.FunctionComponent<KeyboardProps> = (props: KeyboardProps) => {
 
     function makeButton(x: string) {
-        return (<Key letter={x} key={x}></Key>)
+        return (<Key letter={x} state={props.keys[x] || ''}  key={x}></Key>)
     }
 
     return (
