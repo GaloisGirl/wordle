@@ -27,32 +27,38 @@ export function reducer(state: AppState, action: any) {
     switch (action.type) {
         case 'letter':
             if (newState.guesses[newState.currentGuess].length < 5) {
-                newState.guesses[newState.currentGuess] +=  action.letter
+                newState.guesses[newState.currentGuess] += action.letter
             }
-            return newState
+            break
         case 'delete':
-            newState.guesses[newState.currentGuess] = newState.guesses[newState.currentGuess].slice(0, -1)  
-            return newState
+            newState.guesses[newState.currentGuess] = newState.guesses[newState.currentGuess].slice(0, -1)
+            break
         case 'enter':
+            if (newState.currentGuess > 5) {
+                break
+            }
             var guess = newState.guesses[newState.currentGuess]
-            if (guess.length == 5) {
-                if (guess == newState.answer) {
-                    alert("You won!")
-                }
-                // TODO: validate against list of words
-                newState.currentGuess += 1
-                for (var i = 0; i < guess.length; i++) {
-                    if (guess[i] === newState.answer[i]) {
-                        newState.keys[guess[i]] = KEY_STATE.CORRECT
-                    } else if (newState.answer.includes(guess[i])) {
-                        newState.keys[guess[i]] = newState.keys[guess[i]] || KEY_STATE.PRESENT
-                    } else {
-                        newState.keys[guess[i]] = newState.keys[guess[i]] || KEY_STATE.ABSENT
-                    }                     
+            if (guess.length < 5) {
+                break
+            }
+            if (guess == newState.answer) {
+                alert("You won!")
+                break
+            }
+            // TODO: validate against list of words                  
+            newState.currentGuess += 1
+            for (var i = 0; i < guess.length; i++) {
+                if (guess[i] === newState.answer[i]) {
+                    newState.keys[guess[i]] = KEY_STATE.CORRECT
+                } else if (newState.answer.includes(guess[i])) {
+                    newState.keys[guess[i]] = newState.keys[guess[i]] || KEY_STATE.PRESENT
+                } else {
+                    newState.keys[guess[i]] = newState.keys[guess[i]] || KEY_STATE.ABSENT
                 }
             }
-            return newState
+            break
         default:
-            throw new Error();            
+            throw new Error();
     }
+    return newState
 }
