@@ -35,7 +35,7 @@ export const App: React.FunctionComponent = () => {
   }
 
   return (
-    <Stack style={{ width: 600, margin: 'auto' }} tokens={{ childrenGap: 20 }}>
+    <Stack style={{ width: 540, margin: 'auto' }} tokens={{ childrenGap: 20 }}>
       <Stack horizontal horizontalAlign="center" verticalAlign='center'>
         <Modals.HelpModal></Modals.HelpModal>
         <Modals.WardleModal></Modals.WardleModal>
