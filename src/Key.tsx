@@ -11,10 +11,6 @@ interface KeyProps {
 
 export const Key: React.FunctionComponent<KeyProps> = (props: KeyProps) => {
 
-    function letterClick(x: string, e: any) {
-        console.log('clicked', x, e)
-    }
-
     const keyStyles: CSS.Properties = {
         minWidth: "unset",
         flexGrow: 1,

@@ -6,7 +6,7 @@ import { Keyboard } from './Keyboard';
 import { Grid } from './grid/Grid';
 import * as State from './state';
 
-const initialState = {
+/* const initialState = {
   answer: 'AZURE',
   currentGuess: 1,
   guesses: ['QUERY', ...Array(5).fill('')],
@@ -17,6 +17,14 @@ const initialState = {
     Q: State.KEY_STATE.ABSENT,
     Y: State.KEY_STATE.ABSENT
   }
+} */
+
+const initialState = {
+  // TODO: different words
+  answer: 'AZURE',
+  currentGuess: 0,
+  guesses: Array(6).fill(''),
+  keys: {}
 }
 
 export const App: React.FunctionComponent = () => {
