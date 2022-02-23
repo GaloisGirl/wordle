@@ -1,7 +1,7 @@
 import React from 'react';
 import CSS from 'csstype';
 import { DefaultButton } from '@fluentui/react';
-import { BACKGROUND_COLORS } from './state';
+import { STATE_BACKGROUND_COLORS, STATE_TEXT_DECORATIONS } from './state';
 
 interface KeyProps {
     letter: string
@@ -14,7 +14,8 @@ export const Key: React.FunctionComponent<KeyProps> = (props: KeyProps) => {
     const keyStyles: CSS.Properties = {
         minWidth: "unset",
         flexGrow: 1,
-        backgroundColor: BACKGROUND_COLORS[props.state]
+        backgroundColor: STATE_BACKGROUND_COLORS[props.state],
+        textDecoration: STATE_TEXT_DECORATIONS[props.state],
     }
 
     return (

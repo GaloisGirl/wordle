@@ -8,11 +8,18 @@ export const KEY_STATE = {
     UNKNOWN: 'unknown'
 }
 
-export const BACKGROUND_COLORS = {
+export const STATE_BACKGROUND_COLORS = {
     [KEY_STATE.CORRECT]: SharedColors.yellowGreen10,
     [KEY_STATE.PRESENT]: SharedColors.yellow10,
     [KEY_STATE.ABSENT]: NeutralColors.gray50,
     [KEY_STATE.UNKNOWN]: "transparent"
+}
+
+export const STATE_TEXT_DECORATIONS = {
+    [KEY_STATE.CORRECT]: 'underline',
+    [KEY_STATE.PRESENT]: 'underline dotted',
+    [KEY_STATE.ABSENT]: 'line-through',
+    [KEY_STATE.UNKNOWN]: 'transparent'
 }
 
 interface AppState {
