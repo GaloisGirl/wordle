@@ -48,9 +48,7 @@ export function reducer(state: AppState, action: any) {
                 break
             }
             if (guess == newState.answer) {
-                newState.currentGuess += 1
                 newState.won = true
-                break
             }
             // TODO: validate against list of words
             newState.currentGuess += 1
