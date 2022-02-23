@@ -6,6 +6,7 @@ import { BACKGROUND_COLORS } from './state';
 interface KeyProps {
     letter: string
     state: string
+    onClick: () => void
 }
 
 export const Key: React.FunctionComponent<KeyProps> = (props: KeyProps) => {
@@ -23,7 +24,7 @@ export const Key: React.FunctionComponent<KeyProps> = (props: KeyProps) => {
     return (
         <DefaultButton 
             text={props.letter}
-            onClick={(e) => letterClick(props.letter, e)}
+            onClick={props.onClick}
             style={keyStyles} ></DefaultButton>
     )
 }
