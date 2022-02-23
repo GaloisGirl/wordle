@@ -2,7 +2,7 @@ import React from 'react';
 import { Stack } from '@fluentui/react';
 
 import * as Modals from './modals';
-import { Keyboard } from './Keyboard'; 
+import { Keyboard } from './Keyboard';
 import { Grid } from './grid/Grid';
 import * as State from './state';
 
@@ -22,8 +22,12 @@ const initialState = {
 export const App: React.FunctionComponent = () => {
   const [state, dispatch] = React.useReducer(State.reducer, initialState)
 
+  function onLetter(l: string) {
+    return (e: any) => dispatch({ type: 'letter', letter: l })
+  }
+
   return (
-    <Stack style={{ width: 600, margin: 'auto' }} tokens={{childrenGap: 20}}>
+    <Stack style={{ width: 600, margin: 'auto' }} tokens={{ childrenGap: 20 }}>
       <Stack horizontal horizontalAlign="center" verticalAlign='center'>
         <Modals.HelpModal></Modals.HelpModal>
         <Modals.WardleModal></Modals.WardleModal>
@@ -32,7 +36,12 @@ export const App: React.FunctionComponent = () => {
         <Modals.SettingsModal></Modals.SettingsModal>
       </Stack>
       <Grid answer={state.answer} guesses={state.guesses} currentGuess={state.currentGuess} > </Grid>
-      <Keyboard keys={state.keys}></Keyboard>
+      <Keyboard
+        keys={state.keys}
+        onLetter={onLetter}
+        onDelete={() => dispatch({ type: 'delete' })}
+        onEnter={() => dispatch({ type: 'enter' })}
+      ></Keyboard>
     </Stack>
   );
 };
