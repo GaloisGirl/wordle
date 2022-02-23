@@ -15,7 +15,7 @@ export const Keyboard: React.FunctionComponent<KeyboardProps> = (props: Keyboard
         return (<Key 
             key={x}
             letter={x}
-            state={props.keys[x] || ''}              
+            state={props.keys[x] || ''}
             onClick={props.onLetter(x)}
         ></Key>)
     }

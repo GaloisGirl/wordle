@@ -36,6 +36,9 @@ export function reducer(state: AppState, action: any) {
         case 'enter':
             var guess = newState.guesses[newState.currentGuess]
             if (guess.length == 5) {
+                if (guess == newState.answer) {
+                    alert("You won!")
+                }
                 // TODO: validate against list of words
                 newState.currentGuess += 1
                 for (var i = 0; i < guess.length; i++) {
@@ -50,6 +53,6 @@ export function reducer(state: AppState, action: any) {
             }
             return newState
         default:
-            throw new Error();
+            throw new Error();            
     }
 }
