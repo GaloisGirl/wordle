@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack } from '@fluentui/react';
+import { MessageBar, MessageBarType, Stack } from '@fluentui/react';
 
 import * as Modals from './modals';
 import { Keyboard } from './Keyboard';
@@ -22,6 +22,7 @@ import * as State from './state';
 const initialState = {
   // TODO: different words
   answer: 'AZURE',
+  won: false,
   currentGuess: 0,
   guesses: Array(6).fill(''),
   keys: {}
@@ -43,6 +44,14 @@ export const App: React.FunctionComponent = () => {
         <Modals.StatsModal></Modals.StatsModal>
         <Modals.SettingsModal></Modals.SettingsModal>
       </Stack>
+      {state.won && (
+          <MessageBar
+            delayedRender={false}
+            messageBarType={MessageBarType.success}>
+            You won!
+          </MessageBar>
+        )}
+
       <Grid answer={state.answer} guesses={state.guesses} currentGuess={state.currentGuess} > </Grid>
       <Keyboard
         keys={state.keys}

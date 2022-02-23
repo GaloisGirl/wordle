@@ -24,35 +24,35 @@ export const STATE_TEXT_DECORATIONS = {
 
 interface AppState {
     answer: string,
+    won: boolean
     currentGuess: number,
     guesses: string[],
     keys: { [key: string]: string }
 }
 
 export function reducer(state: AppState, action: any) {
+    if (state.won || state.currentGuess > 5) {
+        return state
+    }
     var newState = { ...state }
     switch (action.type) {
         case 'letter':
-            if (newState.guesses[newState.currentGuess].length < 5) {
-                newState.guesses[newState.currentGuess] += action.letter
-            }
+            newState.guesses[newState.currentGuess] = (newState.guesses[newState.currentGuess] + action.letter).slice(0, 5)
             break
         case 'delete':
             newState.guesses[newState.currentGuess] = newState.guesses[newState.currentGuess].slice(0, -1)
             break
         case 'enter':
-            if (newState.currentGuess > 5) {
-                break
-            }
             var guess = newState.guesses[newState.currentGuess]
             if (guess.length < 5) {
                 break
             }
             if (guess == newState.answer) {
-                alert("You won!")
+                newState.currentGuess += 1
+                newState.won = true
                 break
             }
-            // TODO: validate against list of words                  
+            // TODO: validate against list of words
             newState.currentGuess += 1
             for (var i = 0; i < guess.length; i++) {
                 if (guess[i] === newState.answer[i]) {
